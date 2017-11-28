@@ -20,6 +20,7 @@ const notAdmin = `!${ADMIN_ROLE}`
 const notCustomer = `!${clientRoles.CUSTOMER}`
 const notDonor = `!${clientRoles.DONOR}`
 const notVolunteer = `!${clientRoles.VOLUNTEER}`
+const notEmployee = `!${clientRoles.EMPLOYEE}`
 
 function getMenuItems(user) {
   if (!user) return []
@@ -41,6 +42,24 @@ function getMenuItems(user) {
       title: 'Apply',
       link: 'customers/create',
       roles: [notCustomer]
+    }]
+  }, {
+    title: 'Employees',
+    type: 'treeview',
+    link: 'employees',
+    roles: [notAdmin],
+    items: [{
+      title: 'Information',
+      link: 'employees',
+      roles: [clientRoles.EMPLOYEE]
+    }, {
+      title: 'Edit Details',
+      link: `employees/${user._id}/edit`,
+      roles: [clientRoles.EMPLOYEE]
+    }, {
+      title: 'Apply',
+      link: 'employees/create',
+      roles: [notEmployee]
     }]
   }, {
     title: 'Donors',
@@ -114,6 +133,10 @@ function getMenuItems(user) {
   const adminClientItems = [{
     title: 'Customers',
     link: 'customers/list',
+    roles: [ADMIN_ROLE]
+  }, {
+    title: 'Employees',
+    link: 'employees/list',
     roles: [ADMIN_ROLE]
   }, {
     title: 'Volunteers',

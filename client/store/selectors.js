@@ -12,14 +12,17 @@ import {createSelectors as createSettingsSelectors} from '../modules/settings/re
 import {createSelectors as createAuthSelectors} from '../modules/users/authReducer'
 import {createSelectors as createUserSelectors} from '../modules/users/userReducer'
 import {createSelectors as createVolunteerSelectors} from '../modules/volunteer/reducer'
+import {createSelectors as createEmployeeSelectors} from '../modules/employee/reducer'
 
 const customerSelectors = createCustomerSelectors('customer')
+const employeeSelectors = createEmployeeSelectors('employee')
 const deliverySelectors = createDeliverySelectors('delivery', customerSelectors)
 
 export default {
   app: createAppSelectors('app'),
   auth: createAuthSelectors('auth'),
   customer: customerSelectors,
+  employee: employeeSelectors,
   delivery: deliverySelectors,
   donation: createDonationSelectors('donation'),
   donor: createDonorSelectors('donor'),

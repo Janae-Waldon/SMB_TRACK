@@ -1,6 +1,7 @@
 import {schema} from 'normalizr'
 
 export const customer = new schema.Entity('customers', {}, {idAttribute: '_id'})
+export const employee = new schema.Entity('employees', {}, {idAttribute: '_id'})
 export const donation = new schema.Entity('donations', {}, {idAttribute: '_id'})
 export const donor = new schema.Entity('donors', {}, {idAttribute: '_id'})
 export const field = new schema.Entity('fields', {}, {idAttribute: '_id'})
@@ -35,6 +36,7 @@ export const arrayOfQuestionnaires = new schema.Array(questionnaire)
 export const arrayOfSections = new schema.Array(section)
 export const arrayOfUsers = new schema.Array(user)
 export const arrayOfVolunteers = new schema.Array(volunteer)
+export const arrayOfEmployees = new schema.Array(employee)
 
 const shallowVolunteer = new schema.Entity('volunteers', {
   fields: [{meta: field}],
