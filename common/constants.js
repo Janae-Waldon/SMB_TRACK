@@ -77,3 +77,11 @@ export const customerStatus = {
   PENDING: 'Pending',
   INACTIVE: 'Inactive'
 }
+
+export const employeeStatus = {
+  ACCEPTED: 'Accepted',
+  REJECTED: 'Rejected',
+  PENDING: 'Pending',
+  INACTIVE: 'Inactive'
+}
+
