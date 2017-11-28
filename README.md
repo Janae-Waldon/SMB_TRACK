@@ -36,9 +36,9 @@ You'll need to have a **Node.js** version >= 6 installed. Either use your OS's p
 This app uses **MongoDB** as its database engine. Follow [these instructions](https://docs.mongodb.com/manual/installation/#mongodb-community-edition) to install it locally and start the MongoDB server on your machine.
 
 Install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) if it is not already installed. To clone this repository to your local machine, open a command line interface and navigate to the directory where you would like to install the app. Then run
-`git clone https://github.com/freeCodeCamp/Pantry-for-Good.git`
+`git clone https://github.com/Janae-Waldon/SMB_TRACK.git`
 
-Move to the `Pantry-for-Good` directory and run the `npm install` command to install the application dependencies.
+Move to the `SMB_TRACK` directory and run the `npm install` command to install the application dependencies.
 
 Type `npm run dev` to start the application in development mode. If all goes well, it will be available at `http://localhost:8080`.  The application is pre-populated with an administrator account with `admin@example.com` as username  and `password` as password.
 
