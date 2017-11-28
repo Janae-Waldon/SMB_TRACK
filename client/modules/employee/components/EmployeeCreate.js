@@ -9,9 +9,7 @@ import {Button} from 'react-bootstrap'
 import {
   ADMIN_ROLE,
   clientRoles,
-  questionnaireIdentifiers
 } from '../../../../common/constants'
-import {fromForm, toForm} from '../../../lib/questionnaire-helpers'
 import userClientRole from '../../../lib/user-client-role'
 import selectors from '../../../store/selectors'
 import {saveEmployee} from '../reducer'
@@ -19,32 +17,17 @@ import {loadUser} from '../../users/authReducer'
 
 import {Page, PageHeader, PageBody} from '../../../components/page'
 import AssistanceInfo from '../../../components/AssistanceInfo'
-import {Questionnaire} from '../../../components/questionnaire'
-
-const FORM_NAME = 'questionnaireForm'
 
 const mapStateToProps = state => ({
   user: selectors.auth.getUser(state),
   savingEmployees: selectors.employee.saving(state),
   saveEmployeesError: selectors.employee.saveError(state),
-  questionnaire: selectors.questionnaire.getOne(state)(questionnaireIdentifiers.EMPLOYEE),
-  loading: selectors.questionnaire.loading(state) ||
-    selectors.settings.fetching(state) || selectors.food.category.loading(state),
-  loadError: selectors.questionnaire.loadError(state) ||
-    selectors.settings.error(state) || selectors.food.category.loadError(state),
-  loadingUserData: selectors.donor.loading(state) || selectors.volunteer.loading(state),
   loadingUser: selectors.auth.fetching(state),
   settings: selectors.settings.getSettings(state),
-  getDonor: selectors.donor.getOne(state),
-  getVolunteer: selectors.volunteer.getOne(state)
 })
 
 const mapDispatchToProps = dispatch => ({
   saveEmployee: employee => dispatch(saveEmployee(employee)),
-  loadQuestionnaires: () => dispatch(loadQuestionnaires()),
-  loadFoods: () => dispatch(loadFoods()),
-  loadDonor: id => dispatch(loadDonor(id)),
-  loadVolunteer: id => dispatch(loadVolunteer(id)),
   loadUser: () => dispatch(loadUser()),
   push: route => dispatch(push(route)),
   submit: form => dispatch(submit(form))
@@ -57,30 +40,18 @@ class EmployeeCreate extends Component {
     this.state = {
       employee: {
         ...omit(this.props.user, '_id'),
-        household: [],
-        foodPreferences: [],
-        fields: []
       },
       pendingEmployee: {}
     }
   }
-  componentWillMount() {
-    this.props.loadQuestionnaires()
-    this.props.loadFoods()
-    const role = userClientRole(this.props.user)
-    if (role === clientRoles.DONOR) this.props.loadDonor(this.props.user._id)
-    if (role === clientRoles.VOLUNTEER) this.props.loadVolunteer(this.props.user._id)
-  }
 
   componentWillReceiveProps(nextProps) {
-    const {loadingUserData, getVolunteer, getDonor, user} = nextProps
+    const {loadingUserData, user} = nextProps
     if (this.props.loadingUserData && !loadingUserData) {
       const role = userClientRole(user)
       if (!role) return
 
       const userData = [
-        getDonor(user._id),
-        getVolunteer(user._id),
         this.state.employee
       ]
 
@@ -114,7 +85,7 @@ class EmployeeCreate extends Component {
   submit = () => this.props.submit(FORM_NAME)
 
   render() {
-    const {settings, questionnaire, loading, loadingUser, savingEmployees} = this.props
+    const {settings, loading, loadingUser, savingEmployees} = this.props
     const error = this.props.saveEmployeesError || this.props.loadError
 
     return (
@@ -138,14 +109,6 @@ class EmployeeCreate extends Component {
         </PageHeader>
         <PageBody error={error}>
           <form onSubmit={this.saveEmployee}>
-            {questionnaire &&
-              <Questionnaire
-                form={FORM_NAME}
-                questionnaire={questionnaire}
-                loading={savingEmployees || loadingUser}
-                onSubmit={this.saveEmployee}
-                initialValues={toForm(this.state.employee, questionnaire)}
-              />
             }
             <div className="text-right">
               <Button

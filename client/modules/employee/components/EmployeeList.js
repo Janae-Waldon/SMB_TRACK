@@ -6,9 +6,7 @@ import 'react-bootstrap-table/dist/react-bootstrap-table.min.css'
 
 import {fieldTypes} from '../../../../common/constants'
 import selectors from '../../../store/selectors'
-import {fieldsByType} from '../../../lib/questionnaire-helpers'
 import {loadEmployees} from '../reducer'
-import {loadQuestionnaires} from '../../questionnaire/reducers/api'
 
 import {Box, BoxBody, BoxHeader} from '../../../components/box'
 import ClientStatusLabel from '../../../components/ClientStatusLabel'
@@ -16,21 +14,15 @@ import {Page, PageBody} from '../../../components/page'
 
 const mapStateToProps = state => ({
   employees: selectors.employee.getAll(state),
-  loading: selectors.employee.loading(state) ||
-    selectors.questionnaire.loading(state),
-  loadError: selectors.employee.loadError(state) ||
-    selectors.questionnaire.loadError(state)
 })
 
 const mapDispatchToProps = dispatch => ({
   loadEmployees: () => dispatch(loadEmployees()),
-  loadQuestionnaires: () => dispatch(loadQuestionnaires())
 })
 
 class EmployeeList extends Component {
   componentWillMount() {
     this.props.loadEmployees()
-    this.props.loadQuestionnaires()
   }
 
   getStatusLabel = (_, employee) => <ClientStatusLabel client={employee} />

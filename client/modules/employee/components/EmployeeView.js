@@ -4,14 +4,12 @@ import {push} from 'react-router-redux'
 import {Link} from 'react-router-dom'
 import {ButtonToolbar, Button} from 'react-bootstrap'
 
-import {ADMIN_ROLE, questionnaireIdentifiers} from '../../../../common/constants'
 import selectors from '../../../store/selectors'
 import {loadEmployee, saveEmployee, deleteEmployee} from '../reducer'
 import {showConfirmDialog, hideDialog} from '../../core/reducers/dialog'
 
 import {Box, BoxHeader, BoxBody} from '../../../components/box'
 import {Page, PageHeader, PageBody} from '../../../components/page'
-import {QuestionnaireView} from '../../../components/questionnaire-view'
 
 const mapStateToProps = (state, ownProps) => ({
   user: selectors.auth.getUser(state),
@@ -19,11 +17,6 @@ const mapStateToProps = (state, ownProps) => ({
   saveEmployeesError: selectors.employee.saveError(state),
   getEmployee: selectors.employee.getOne(state),
   employeeId: ownProps.match.params.employeeId,
-  questionnaire: selectors.questionnaire.getOne(state)(questionnaireIdentifiers.EMPLOYEE),
-  loading: selectors.questionnaire.loading(state) ||
-    selectors.employee.loading(state),
-  loadFormDataError: selectors.questionnaire.loadError(state) ||
-      selectors.employee.loadError(state)
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -31,8 +24,6 @@ const mapDispatchToProps = dispatch => ({
   saveEmployee: (employee, admin) => dispatch(saveEmployee(employee, admin)),
   deleteEmployee: id => dispatch(deleteEmployee(id)),
   loadFormData: () => {
-    dispatch(loadFoods())
-    dispatch(loadQuestionnaires())
   },
   showDialog: (cancel, confirm, message) =>
     dispatch(showConfirmDialog(cancel, confirm, message, 'Delete')),
@@ -84,7 +75,7 @@ class EmployeeView extends Component {
   }
 
   render() {
-    const {getEmployee, questionnaire, saveEmployeesError} = this.props
+    const {getEmployee, saveEmployeesError} = this.props
     const employee = getEmployee(this.props.employeeId)
     const loading = this.props.loading || this.props.savingEmployees
 
@@ -92,10 +83,8 @@ class EmployeeView extends Component {
       <Page>
         <PageHeader heading={employee && employee.fullName} />
         <PageBody error={saveEmployeesError}>
-          {employee && questionnaire &&
-            <QuestionnaireView
+          {employee &&
               model={employee}
-              questionnaire={questionnaire}
               loading={loading}
             />
           }
