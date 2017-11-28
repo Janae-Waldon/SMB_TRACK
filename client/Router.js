@@ -20,6 +20,7 @@ import Packing from './modules/food/components/Packing'
 import Settings from './modules/settings/SettingsRouter'
 import Users from './modules/users/UserRouter'
 import Volunteers from './modules/volunteer/VolunteerRouter'
+import Employees from './modules/employee/EmployeeRouter'
 
 import requireRole from './components/router/requireRole'
 import SwitchWithNotFound from './components/router/SwitchWithNotFound'

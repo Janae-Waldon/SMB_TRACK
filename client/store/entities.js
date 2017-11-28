@@ -13,6 +13,7 @@ export default function entities(state = {
   sections: {},
   users: {},
   volunteers: {}
+  employees: {}
 }, action) {
   if (action.response && action.response.entities) {
     // need to overwrite arrays instead of merge or elements can't be deleted

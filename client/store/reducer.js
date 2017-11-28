@@ -17,6 +17,7 @@ import questionnaireEditor from '../modules/questionnaire/reducers/editor'
 import settings from '../modules/settings/reducers/settings'
 import user from '../modules/users/userReducer'
 import volunteer from '../modules/volunteer/reducer'
+import employee from '../modules/employee/reducer'
 
 export default combineReducers({
   entities,
@@ -35,5 +36,6 @@ export default combineReducers({
   router,
   settings,
   user,
-  volunteer
+  volunteer,
+  employee
 })
