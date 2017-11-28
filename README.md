@@ -20,8 +20,8 @@ You can deploy it to Heroku by clicking the deploy button above. An admin accoun
 ### Local installation summary:
 1. Install [Node.js](http://nodejs.org) and [MongoDB](https://docs.mongodb.com/manual/installation/#mongodb-community-edition)
 2. Start MongoDB
-3. `git clone https://github.com/freeCodeCamp/Pantry-for-Good.git`
-4. `cd Pantry-for-Good`
+3. `git clone https://github.com/Janae-Waldon/SMB_TRACK.git`
+4. `cd SMB_TRACK`
 5. Make sure you're on the 'staging' branch (`git branch`), otherwise run `git checkout staging`
 6. `npm install`
 7. `npm run dev`
