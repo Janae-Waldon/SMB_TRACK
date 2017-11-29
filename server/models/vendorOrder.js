@@ -6,8 +6,7 @@ const {Schema} = mongoose
 
 const VendorOrderSchema = new Schema({
   vendorOrderID: {
-    type: Number,
-    ref: modelTypes.USER
+    type: Number
   },
   orderingEmployee: {
     type: Number,
