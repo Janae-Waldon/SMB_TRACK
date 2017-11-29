@@ -4,6 +4,7 @@ import {push} from 'react-router-redux'
 import {Link} from 'react-router-dom'
 import {ButtonToolbar, Button} from 'react-bootstrap'
 
+import {ADMIN_ROLE} from '../../../../common/constants'
 import selectors from '../../../store/selectors'
 import {loadEmployee, saveEmployee, deleteEmployee} from '../reducer'
 import {showConfirmDialog, hideDialog} from '../../core/reducers/dialog'
@@ -83,11 +84,11 @@ class EmployeeView extends Component {
       <Page>
         <PageHeader heading={employee && employee.fullName} />
         <PageBody error={saveEmployeesError}>
-          {employee &&
+          
               model={employee}
               loading={loading}
-            />
-          }
+            
+          
 
           {employee && this.isAdmin &&
             <Box>

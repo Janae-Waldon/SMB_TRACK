@@ -2,6 +2,8 @@ import mongoose from 'mongoose'
 
 import {modelTypes} from '../../common/constants'
 
+const {Schema} = mongoose
+
 const EmployeeSchema = new Schema({
   _id: {
     type: Number,
@@ -14,7 +16,7 @@ const EmployeeSchema = new Schema({
   middleName: {
     type: String,
     required: false
-  }
+  },
   lastName: {
     type: String,
     required: true
@@ -43,23 +45,23 @@ const EmployeeSchema = new Schema({
     required: true
   },
   zip: {
-    type: String
+    type: Number,
     required: true
   },
   state: {
-    type: String
+    type: String,
     required: true
   },
   phone: {
-    type: Number
+    type: Number,
     required: true
   },
   position: {
-    type: String
+    type: String,
     required: true
   },
   socialSecurity: {
-    type: Number
+    type: Number,
     required: true
   },
 }, {

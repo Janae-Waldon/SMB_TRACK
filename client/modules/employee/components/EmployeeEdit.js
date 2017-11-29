@@ -5,9 +5,9 @@ import {push} from 'react-router-redux'
 import {Link} from 'react-router-dom'
 import {ButtonToolbar, Button} from 'react-bootstrap'
 
+import {ADMIN_ROLE} from '../../../../common/constants'
 import selectors from '../../../store/selectors'
 import {loadEmployee, saveEmployee} from '../reducer'
-import {loadFoods} from '../../food/reducers/category'
 
 import {Box, BoxHeader, BoxBody} from '../../../components/box'
 import {Page, PageHeader, PageBody} from '../../../components/page'
@@ -37,9 +37,6 @@ class EmployeeEdit extends Component {
     this.props.loadEmployee(this.props.employeeId, this.isAdmin)
   }
 
-  saveEmployee = form =>
-    this.props.saveEmployee(fromForm(form), this.isAdmin)
-
   saveEmployeeStatus = status => () => {
     const employee = this.props.getEmployee(this.props.employeeId)
     if (!employee) return
@@ -51,8 +48,6 @@ class EmployeeEdit extends Component {
 
   handleSubmitSuccess = () =>
     this.props.push(this.isAdmin ? '/employees/list' : '/employees')
-
-  submit = () => this.props.submit(FORM_NAME)
 
   render() {
     const {
@@ -69,12 +64,11 @@ class EmployeeEdit extends Component {
         <PageHeader heading={employee && employee.fullName} />
         <PageBody error={error}>
           <form onSubmit={this.saveEmployee}>
-                form={FORM_NAME}
                 loading={savingEmployees}
                 onSubmit={this.saveEmployee}
                 onSubmitSuccess={this.handleSubmitSuccess}
-              />
-            }
+              
+            
             { employee && !loading && employee.status !== "Rejected" &&
             <Box>
               <BoxHeader heading="Status" />

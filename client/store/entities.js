@@ -12,7 +12,7 @@ export default function entities(state = {
   questionnaires: {},
   sections: {},
   users: {},
-  volunteers: {}
+  volunteers: {},
   employees: {}
 }, action) {
   if (action.response && action.response.entities) {

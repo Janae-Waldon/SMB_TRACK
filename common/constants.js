@@ -51,7 +51,7 @@ export const pageIdentifiers = {
   CUSTOMER: 'customers',
   DONOR: 'donors',
   VOLUNTEER: 'volunteers',
-  EMPLOYEE: 'employee'
+  EMPLOYEE: 'employee',
   CUSTOMER_ACCEPTED: 'accept-customer',
   CUSTOMER_REJECTED: 'reject-customer',
   CUSTOMER_APPLIED: 'customer-application',

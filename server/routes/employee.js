@@ -1,6 +1,6 @@
 import Router from 'express-promise-router'
 
-import EmployeeController from '../controllers/employee'
+import employeeController from '../controllers/employee'
 import userController from '../controllers/users'
 import websocketMiddleware from '../lib/websocket-middleware'
 import {employee} from '../../common/schemas'

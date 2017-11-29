@@ -93,8 +93,6 @@ export default {
   hasAuthorization(req, res, next) {
     const authorizedRoles = [
       ADMIN_ROLE,
-      volunteerRoles.DRIVER,
-      volunteerRoles.PACKING
     ]
 
     if (req.user && intersection(req.user.roles, authorizedRoles).length) {

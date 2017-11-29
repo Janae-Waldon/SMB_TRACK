@@ -41,6 +41,7 @@ const Router = ({history}) =>
         <SwitchWithNotFound>
           <Route exact path="/" component={Home} />
           <Route path="/customers" component={Customers} />
+          <Route path="/employees" component={Employees} />
           <Route path="/donors" component={Donors} />
           <Route path="/drivers" component={Drivers} />
           <Route path="/inventory" exact component={canInventory(Inventory)} />

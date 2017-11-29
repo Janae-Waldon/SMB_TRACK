@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import {BootstrapTable, TableHeaderColumn, SizePerPageDropDown} from 'react-bootstrap-table'
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css'
 
+import {fieldTypes} from '../../../../common/constants'
 import selectors from '../../../store/selectors'
 import {loadEmployees} from '../reducer'
 
@@ -79,7 +80,6 @@ class EmployeeList extends Component {
                 <TableHeaderColumn dataField="address">Address</TableHeaderColumn>
                 <TableHeaderColumn dataField="email" dataSort>Email</TableHeaderColumn>
                 <TableHeaderColumn
-                  dataField="householdSummary"
                   width="90px"
                 >
                   Household

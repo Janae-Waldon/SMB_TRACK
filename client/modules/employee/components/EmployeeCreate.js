@@ -8,7 +8,7 @@ import {Button} from 'react-bootstrap'
 
 import {
   ADMIN_ROLE,
-  clientRoles,
+//  clientRoles,
 } from '../../../../common/constants'
 import userClientRole from '../../../lib/user-client-role'
 import selectors from '../../../store/selectors'
@@ -76,16 +76,8 @@ class EmployeeCreate extends Component {
     }
   }
 
-  saveEmployee = form => {
-    const pendingEmployee = fromForm(form)
-    this.setState({pendingEmployee})
-    this.props.saveEmployee(pendingEmployee, this.isAdmin)
-  }
-
-  submit = () => this.props.submit(FORM_NAME)
-
   render() {
-    const {settings, loading, loadingUser, savingEmployees} = this.props
+    const {settings, loading} = this.props
     const error = this.props.saveEmployeesError || this.props.loadError
 
     return (
@@ -109,7 +101,8 @@ class EmployeeCreate extends Component {
         </PageHeader>
         <PageBody error={error}>
           <form onSubmit={this.saveEmployee}>
-            }
+            
+            
             <div className="text-right">
               <Button
                 type="button"
