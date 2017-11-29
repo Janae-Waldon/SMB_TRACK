@@ -12,7 +12,7 @@ const itemSchema = new Schema({
     type:String, 
     trim: true
   },
-  manufacturerName: {
+  manufacturer: {
     type: Number, 
     ref: modelTypes.VENDOR
   },
