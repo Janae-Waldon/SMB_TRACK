@@ -9,11 +9,7 @@ var vendorSchema = new Schema({
     type: Number,
     ref: modelTypes.USER
   },
-  name: {
-    type: String,
-    trim: true
-  },
-  firstName: {
+  companyName: {
     type: String,
     trim: true
   },
