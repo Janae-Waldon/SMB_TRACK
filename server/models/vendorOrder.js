@@ -9,11 +9,11 @@ const VendorOrderSchema = new Schema({
     type: Number,
     ref: modelTypes.USER
   },
-  OrderingEmployee: {
+  orderingEmployee: {
     type: Number,
     ref: modelTypes.EMPLOYEE
   },
-  Vendor: {
+  vendor: {
     type: Number,
     ref: modelTypes.VENDOR
   },
